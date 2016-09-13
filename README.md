@@ -17,4 +17,38 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+##Usage:
+
+``` bash
+# used as a component of vue
+<template>
+    <menu-tree :tree-data="leftNav"></menu-tree>
+</template>
+<script>
+import menuTree from '../components/menuTree.vue'
+export default {
+    data(){
+        return {
+            leftNav:[
+                {
+                    text:"user center", // show text
+                    url:"/user", // link which will be matched in router , it could also be '' which depend your project structure.
+                    icon:"", // optional, if you wanna add icon before text
+                    access:true //optional, default true, if you wanna hide current menu ,set it to false
+                    children:[
+                        {   //child can have all option above, nest it as you need.
+                            text:"ABC",
+                            url:""
+                        }
+
+                    ]
+                }
+            ]
+        }
+    },
+    components:{
+        menuTree
+    }
+}
+</script>
+
