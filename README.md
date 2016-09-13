@@ -2,7 +2,7 @@
 
 > multilayer menu with vue 1
 
-![alt tag](http://url/to/img.png)
+![alt tag](https://github.com/kuma0605/vue-multilayer-menu/blob/master/demo.png)
 
 ## Build Setup
 
