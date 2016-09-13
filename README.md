@@ -1,6 +1,8 @@
 # multilayer-menu
 
-> A Vue.js project
+> multilayer menu with vue 1
+
+![alt tag](http://url/to/img.png)
 
 ## Build Setup
 
