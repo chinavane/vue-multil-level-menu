@@ -29,13 +29,15 @@
                     height:@menu_height;
                     line-height:@menu_height;
                     /* use inline-block */
-                    display: block;
+                    display: inline-block;
+                    width:100%;
                     color:#fff;
                     letter-spacing:2px;
                     text-decoration:none;
                     cursor:pointer;
                     padding-left:25px;
                     padding-right:15px;
+                    box-sizing:border-box;
 
                     i:first-child:not(.arrow-left){
                         margin-right:17px;
