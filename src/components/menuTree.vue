@@ -110,8 +110,10 @@
                 if(url){
                     let currentNode = event.target;
 
-                    let topLi;
-                    topLi = getTopChildrenMenu(currentNode);
+                    let activeMenu= currentNode.classList.contains('active-menu');
+                    if(activeMenu)return;
+
+                    let topLi = getTopChildrenMenu(currentNode);
 
                     let topChildMenu=topLi.querySelector('.childrenMenu');
                     if(topChildMenu){
