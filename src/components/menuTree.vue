@@ -110,15 +110,15 @@
                 if(url){
                     let currentNode = event.target;
 
-                    let topChildMenu;
-                    topChildMenu = getTopChildrenMenu(currentNode);
+                    let topLi;
+                    topLi = getTopChildrenMenu(currentNode);
 
-                    let isTopLi=topChildMenu.querySelector('.childrenMenu');
-                    if(isTopLi){
-                        isTopLi.style.display='none';
+                    let topChildMenu=topLi.querySelector('.childrenMenu');
+                    if(topChildMenu){
+                        topChildMenu.style.display='none';
 
                         setTimeout(() => {
-                            topChildMenu.querySelector('.childrenMenu').style.display='';
+                            topChildMenu.style.display='';
                         },500);
                     }
 
@@ -134,8 +134,6 @@
                             return getTopChildrenMenu(node.parentNode) || node;
                         }
                     }
-
-
                 }
             }
         }
