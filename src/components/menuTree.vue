@@ -1,7 +1,7 @@
 <template>
         <ul class="menuContainer">
             <li v-for="item in treeData" class="eachLi" v-show="showMenu(item.access)">
-                <a v-link="convertLink(item.url)" class="eachMenu"><i v-if="item.icon" :class="iconStyle(item.icon)" v-></i>{{item.text}}<i v-if="item.children" class="arrow-left glyphicon glyphicon-menu-right"></i></a>
+                <a v-link="convertLink(item.url)" class="eachMenu" @click="hideExpandMenu(item.url, $event)"><i v-if="item.icon" :class="iconStyle(item.icon)" v-></i>{{item.text}}<i v-if="item.children" class="arrow-left glyphicon glyphicon-menu-right"></i></a>
                 <menu-tree v-if="item.children" class="childrenMenu" :tree-data="item.children"></menu-tree>
             </li>
         </ul>
@@ -105,6 +105,38 @@
             },
             showMenu(access){
                 return Object.is(access,undefined)?true:access;
+            },
+            hideExpandMenu(url, event){
+                if(url){
+                    let currentNode = event.target;
+
+                    let topChildMenu;
+                    topChildMenu = getTopChildrenMenu(currentNode);
+
+                    let isTopLi=topChildMenu.querySelector('.childrenMenu');
+                    if(isTopLi){
+                        isTopLi.style.display='none';
+
+                        setTimeout(() => {
+                            topChildMenu.querySelector('.childrenMenu').style.display='';
+                        },500);
+                    }
+
+                    function getTopChildrenMenu(node){
+                        let isUl=node.tagName=='UL';
+                        let isTop=false;
+                        if(isUl){
+                            isTop=!node.classList.contains('childrenMenu');
+                        }
+                        if(isTop){
+                            return undefined;
+                        }else{
+                            return getTopChildrenMenu(node.parentNode) || node;
+                        }
+                    }
+
+
+                }
             }
         }
     }
